@@ -3,7 +3,7 @@ import numpy
 import random
 import benchmarks as Fit    
 import matplotlib.pyplot as plt   
-
+from functions import f
 
     
 def get_cuckoos(nest,best,lb,ub,n,dim):
@@ -37,7 +37,7 @@ def get_best_nest(nest,newnest,fitness,n,dim):
 
     for j in range(0,n):
     #for j=1:size(nest,1),
-        fnew=Fit.F1(newnest[j,:])
+        fnew=f(newnest[j,:])
         if fnew<=fitness[j]:
            fitness[j]=fnew
            tempnest[j,:]=newnest[j,:]

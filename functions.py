@@ -1,11 +1,16 @@
 import math
+
 def todecimal(x,rng):
-   n=int(x,2)
-   s=x.replace('0','1') #for example convert 10010 to 11111
+   t=int(float(x))
+   if t<0:
+      n=bin(t)[3:]
+   else:
+      n=bin(t)[2:]
+   s=n.replace('0','1') #for example convert 10010 to 11111
    upper=int(s,2)
    ratio=(rng[1]-rng[0])/upper
    
-   return n*ratio+rng[0]
+   return t*ratio+rng[0]
 def f(x,name='Rosenbrock',dim=10):
 #x is binary string; dim is dimension of benchmark function
     if name=='Sphere':

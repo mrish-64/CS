@@ -37,7 +37,7 @@ def get_best_nest(nest,newnest,fitness,n,dim):
 
     for j in range(0,n):
     #for j=1:size(nest,1),
-        fnew=f(newnest[j,:])
+        fnew=f(newnest[j,:],dim=dim)
         if fnew<=fitness[j]:
            fitness[j]=fnew
            tempnest[j,:]=newnest[j,:]
@@ -65,15 +65,15 @@ def empty_nests(nest,pa,n,dim):
     tempnest=nest+stepsize*K
     ################ change for binary #######################################
     sigV=1/(1+(numpy.exp(-tempnest)))
-    new_nest = (sigV > numpy.random.rand(n.dim)).astype(int)
+    new_nest = (sigV > numpy.random.rand(n,dim)).astype(int)
     ################ end change ##############################################
     return new_nest
 ##########################################################################
 
 
 
-lb=-10
-ub=10
+lb=-100
+ub=100
 dim=30;
 n=50
 N_IterTotal=1000

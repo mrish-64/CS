@@ -28,6 +28,7 @@ def get_cuckoos(nest,best,lb,ub,n,dim):
         for k in range(dim):
             tempnest[j,k]=numpy.clip(s[k], lb[k], ub[k])
 
+    tempnest=numpy.round(tempnest).astype(int)
     return tempnest
 
 def get_best_nest(nest,newnest,fitness,n,dim):
@@ -72,8 +73,8 @@ def empty_nests(nest,pa,n,dim):
 
 
 
-lb=-100
-ub=100
+lb=0
+ub=1
 dim=30;
 n=50
 N_IterTotal=1000
@@ -94,9 +95,9 @@ if not isinstance(ub, list):
      ub = [ub] * dim
 
 # RInitialize nests randomely
-nest = numpy.zeros((n, dim))
+nest = numpy.zeros((n, dim)).astype(int)
 for i in range(dim):
-  nest[:, i] = numpy.random.uniform(0,1, n) * (ub[i] - lb[i]) + lb[i]
+  nest[:, i] = numpy.random.randint(2,size=n)
        
     
 new_nest=numpy.zeros((n,dim))
